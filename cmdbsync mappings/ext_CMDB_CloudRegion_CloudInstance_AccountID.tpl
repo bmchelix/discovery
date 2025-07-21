@@ -18,7 +18,6 @@ syncmapping ext_CloudRegion_CloudInstance_AccountId 1.0
         datamodel 0, 1, 2, 3, 4, 5, 6;
     end overview;
 
-    // pull in the discovery node mapping from the OOTB cloud region module
     mapping 
         from CloudRegion_CloudInstance.region_node as region_node   
     end mapping;
