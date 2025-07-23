@@ -14,8 +14,7 @@ from CMDB.SNMPManagedDevice_ComputerSystem import SNMPManagedDevice_ComputerSyst
 from CMDB.StorageSystem_ComputerSystem import StorageSystem_ComputerSystem 2.3;
 
 syncmapping ext_cmdb_ComputerSystem_custom_attrib 1.3
-    """
-        Add attributes once the TKU has run.
+    """ Add attributes once the TKU has run.
         Saves importing and maintaining the entire code and requiring updating everytime the TKU is changed.
 
         Rule No		Rule Details

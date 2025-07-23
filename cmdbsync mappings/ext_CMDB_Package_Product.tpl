@@ -11,8 +11,7 @@ from CMDB.SyncConfig          import Config              1.2;
 from CMDB.Host_ComputerSystem import Host_ComputerSystem 2.5;
 
 syncmapping Package_Product 2.3
-    """
-        Map Product nodes to BMC_Product class.
+    """ Map Product nodes to BMC_Product class.
         Consumes basics from SoftwareInstance mappings such as default_publisher from the SyncConfig.
 
         Rule No  Rule Details

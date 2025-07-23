@@ -10,8 +10,7 @@ end metadata;
 from CMDB.SoftwareInstance_SoftwareServer import SoftwareInstance_SoftwareServer 4.3;
 
 syncmapping ext_SoftwareInstance_SoftwareServer_username 1.0
-    """
-        Add attributes once the TKU has run.
+    """ Add attributes once the TKU has run.
         Saves importing and maintaining the entire code and requiring updating everytime the TKU is changed.
 
         Rule No		Rule Details

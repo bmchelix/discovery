@@ -10,8 +10,7 @@ end metadata;
 from CMDB.CloudRegion_CloudInstance import CloudRegion_CloudInstance 1.2;
 
 syncmapping ext_CloudRegion_CloudInstance_AccountId 1.0
-    """
-        16/05/2023     created
+    """ 16/05/2023     created
     """
     overview
         tags CMDB, Core_Mapping;

@@ -14,8 +14,7 @@ from CMDB.SNMPManagedDevice_ComputerSystem import SNMPManagedDevice_ComputerSyst
 from CMDB.StorageSystem_ComputerSystem import StorageSystem_ComputerSystem 2.3;
 
 syncmapping ext_cmdb_ComputerSystem_uppercase 1.0
-    """
-        Modify and/or add attributes once the TKU has run.
+    """ Modify and/or add attributes once the TKU has run.
         Saves importing and maintaining the entire code and requiring updating everytime the TKU is changed.
 
         Rule No  Rule Details
