@@ -1,0 +1,1 @@
+This repository contains custom content for BMC Helix Discovery. This public repo contents are not certified by BMC Helix and are shared for the benefit of all customers, we welcome public contributions to this repo under the MIT license.
