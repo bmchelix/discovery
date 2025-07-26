@@ -4,7 +4,7 @@ metadata
     origin := "community";
     description := 'Update attributes to upper case';
     last_update := '08 June 2018';
-    tree_path := 'CMDBsync', 'Extended', 'ComputerSystem', 'UpperCase';
+    tree_path := 'community', 'CMDBsync', 'Extended', 'ComputerSystem', 'UpperCase';
 end metadata;
 
 from CMDB.Host_ComputerSystem import Host_ComputerSystem 2.4;

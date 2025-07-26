@@ -4,7 +4,7 @@ metadata
     origin := 'community';
     categories := 'Performance Management Software';
     publishers := 'Elastic';
-    tree_path := 'Software', 'Passive', 'Elastic';
+    tree_path := 'community', 'Software', 'Passive', 'Elastic';
     last_update := '06 July 2021';
 end metadata;
 

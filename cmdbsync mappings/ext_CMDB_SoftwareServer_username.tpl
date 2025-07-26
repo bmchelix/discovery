@@ -3,7 +3,7 @@ tpl 1.19 module cmdb_ext_SoftwareServer_UserName;
 metadata
     origin := "community";
     description := "Add username attribute to SoftwareServer class";
-    tree_path := 'CMDBsync', 'Extended', 'SoftwareServer', 'Username';
+    tree_path := 'community', 'CMDBsync', 'Extended', 'SoftwareServer', 'Username';
     last_update := '28 August 2020';
 end metadata;
 

@@ -4,7 +4,7 @@ metadata
     origin := 'community';
 	description := 'Add attributes over TKU set values';
 	last_update := '12 July 2021';
-    tree_path := 'CMDBsync', 'Extended', 'ComputerSystem', 'Custom Attributes';
+    tree_path := 'community', 'CMDBsync', 'Extended', 'ComputerSystem', 'Custom Attributes';
 end metadata;
 
 from CMDB.Host_ComputerSystem import Host_ComputerSystem 2.4;

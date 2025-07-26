@@ -2,7 +2,7 @@ tpl 1.19 module ext.netcool;
 
 metadata
     origin:= 'community';
-    tree_path := 'Software', 'Active', 'Netcool';
+    tree_path := 'community', 'Software', 'Active', 'Netcool';
 end metadata;
 
 configuration cus_NetcoolConfig 1.0

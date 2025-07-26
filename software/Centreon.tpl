@@ -5,7 +5,7 @@ metadata
 	description := "Centreon system and network monitoring software";
     categories := 'Monitoring';
 	publishers := 'Centreon';
-    tree_path := 'Software', 'Passive', 'Centreon';
+    tree_path := 'community', 'Software', 'Passive', 'Centreon';
 	last_update := '06 July 2021';
 end metadata;
 

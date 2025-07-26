@@ -4,7 +4,7 @@ metadata
 	origin := 'community';
     description := 'Symantec EnterpriseVault';
 	publishers := 'Symantec';
-    tree_path := 'Software', 'Active', 'Symantec', 'Enterprise Vault';
+    tree_path := 'community', 'Software', 'Active', 'Symantec', 'Enterprise Vault';
 end metadata;
 
 from SupportingFiles.RDBMS_Functions import rdbms_functions 1.18;

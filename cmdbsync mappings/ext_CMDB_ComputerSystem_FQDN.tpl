@@ -4,7 +4,7 @@ metadata
     origin := "community";
     description := 'Convert fqdn to shortname ';
     last_update := '08 June 2018';
-    tree_path := 'CMDBsync', 'Extended', 'ComputerSystem', 'FQDN';
+    tree_path := 'community', 'CMDBsync', 'Extended', 'ComputerSystem', 'FQDN';
 end metadata;
 
 from CMDB.Host_ComputerSystem import Host_ComputerSystem 2.4;

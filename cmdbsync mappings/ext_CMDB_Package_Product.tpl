@@ -4,7 +4,7 @@ metadata
     origin := "community";
     description := 'Package nodes mapped to BMC_Product';
     last_update := '06 September 2022';
-    tree_path := 'CMDBsync', 'Extended', 'Package -> BMC_Product';
+    tree_path := 'community', 'CMDBsync', 'Extended', 'Package -> BMC_Product';
 end metadata;
 
 from CMDB.SyncConfig          import Config              1.2;

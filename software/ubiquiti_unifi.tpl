@@ -4,7 +4,7 @@ metadata
     origin := 'community';
     description := '';
     product_synonyms := "unifi";
-    tree_path := 'Software', 'Active', 'Ubiquiti', 'Unifi';
+    tree_path := 'community', 'Software', 'Active', 'Ubiquiti', 'Unifi';
 end metadata;
 
 definitions local_functions 1.0

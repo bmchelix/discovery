@@ -5,7 +5,7 @@ metadata
 	description := "Eracent EPA";
 	//product_synonyms := '';
 	publishers := 'Eracent';
-    tree_path := 'Software', 'Active', 'Eracent Endpoint Analyzer';
+    tree_path := 'community', 'Software', 'Active', 'Eracent Endpoint Analyzer';
 	last_update := '05 May 2021';
 end metadata;
 

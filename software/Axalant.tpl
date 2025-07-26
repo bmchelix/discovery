@@ -4,7 +4,7 @@ metadata
 	origin := 'community';
     categories := 'Engineering Applications';
 	publishers := 'Axalant';
-    tree_path := 'Software', 'Passive', 'Axalant';
+    tree_path := 'community', 'Software', 'Passive', 'Axalant';
 	last_update := '06 July 2021';
 end metadata;
 

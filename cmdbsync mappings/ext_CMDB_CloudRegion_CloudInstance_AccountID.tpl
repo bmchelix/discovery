@@ -4,7 +4,7 @@ metadata
     origin := "community";
     description := 'Set AccountID to either the Azure Subscription ID or AWS Account ID';
     last_update := '16 May 2023';
-    tree_path := 'CMDBsync', 'Extended', 'CloudRegion', 'AccountID';
+    tree_path := 'community', 'CMDBsync', 'Extended', 'CloudRegion', 'AccountID';
 end metadata;
 
 from CMDB.CloudRegion_CloudInstance import CloudRegion_CloudInstance 1.2;
