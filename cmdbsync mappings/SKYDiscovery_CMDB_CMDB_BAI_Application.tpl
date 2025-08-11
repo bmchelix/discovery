@@ -4,8 +4,7 @@ from CMDB.BAI_Application						 import BAI_Application 2.11;
 
 syncmapping BAI_Application_Augment 1.0
  """
-    Change the default ComputerSystem HostName and TokenId to take
-    only the first component of compound dot-separated hostnames.
+    update the manufacturer of businessapplicationinstances
     """
     overview
         tags CMDB, Extension;
@@ -30,5 +29,6 @@ end if;
 BAIApplication.ManufacturerName := "DiscoveryService";
  
 end body;
+
 
 end syncmapping;
