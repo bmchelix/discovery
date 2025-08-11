@@ -10,6 +10,7 @@ syncmapping Document_Augment 1.0
     """
     TLS Detail nodes under SoftwareInstances, LoadBalancerServices or ManagementController
     mapped to BMC_Document.
+	Add one or more new attributes to the CI, based on attributes in the BMC Discovery all node.
     """
     overview
 	tags CMDB, Extension;
@@ -47,4 +48,5 @@ body
         document_ci.Department := "SKYDISCOVERY";
 
 end body;
+
 end syncmapping;
