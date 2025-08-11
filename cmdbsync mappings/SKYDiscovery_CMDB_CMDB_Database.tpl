@@ -6,7 +6,7 @@ from CMDB.MFPart_ComputerSystem              import MFPart_ComputerSystem 2.0;
 
 syncmapping Database_Augment 1.0
 """
-Add one or more new attributes to the BMC_IPEndpoint CI, based
+Add one or more new attributes to the BMC_Database CI, based
 on attributes in the BMC Discovery all node.
 """
 overview
@@ -47,3 +47,4 @@ body
 end body;
 
 end syncmapping;
+
