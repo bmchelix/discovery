@@ -1,15 +1,3 @@
-// This is a template pattern module containing a CMDB syncmapping
-// that overrides the Category, Type and Item for BMC_Product
-// CIs mapped from particular BMC Discovery SoftwareInstance nodes.
-//
-// Names surrounded by double dollar signs like $$pattern_name$$ should all be 
-// replaced with values suitable for the pattern.
-//
-// Text prefixed with // like these lines are comments that extend to
-// the end of the line.
-//
-// This pattern is in the public domain.
-
 tpl 1.19 module SKYDiscovery.CMDB.Port_SYNC;
 
 from CMDB.NetworkInterface_Endpoints import NetworkInterface_Endpoints 3.0;
@@ -17,10 +5,8 @@ from CMDB.Host_ComputerSystem  import Host_ComputerSystem 2.0;
 
 
 syncmapping PORT_CMDB_SYNC 1.0
-
-    """
-    Override the default CTI values for certain BMC_OPERATINGSYSTEM CIs.
-    """
+    """ Add one or more new attributes to the CI, based on attributes in the BMC Discovery all node.
+    Name & Department """
     overview
         tags CMDB, Extension;
     end overview;
@@ -41,8 +27,8 @@ syncmapping PORT_CMDB_SYNC 1.0
         NewName := text.lower("%sysname%");
 
         if NewName has substring "." then
-        // Modify the HostName to only include content up to the first dot
-        NewName := text.split(NewName, ".")[0];
+            // Modify the HostName to only include content up to the first dot
+            NewName := text.split(NewName, ".")[0];
         end if;
 
         sysosname := "%NewName%";
@@ -51,11 +37,10 @@ syncmapping PORT_CMDB_SYNC 1.0
         netport.Name := "%sysosname%-%cinamestart%";
         netport.Department := "SKYDISCOVERY";
 
-
         if ni_node.mac_addr then
-        cinamestartep := lanep.Name;
-        lanep.Name := "%sysosname%-%cinamestartep%";
-        lanep.Department := "SKYDISCOVERY";
+            cinamestartep := lanep.Name;
+            lanep.Name := "%sysosname%-%cinamestartep%";
+            lanep.Department := "SKYDISCOVERY";
         end if;
 
     end body;
@@ -63,10 +48,8 @@ syncmapping PORT_CMDB_SYNC 1.0
 end syncmapping;
 
 syncmapping IP_CMDB_SYNC 1.0
-
-    """
-    Override the default CTI values for certain BMC_OPERATINGSYSTEM CIs.
-    """
+    """ Add one or more new attributes to the CI, based on attributes in the BMC Discovery all node.
+    Name & Department """
     overview
         tags CMDB, Extension;
     end overview;
@@ -84,15 +67,16 @@ syncmapping IP_CMDB_SYNC 1.0
         NewNameipep := text.lower("%sysnameipep%");
 
         if NewNameipep has substring "." then
-        // Modify the HostName to only include content up to the first dot
-        NewNameipep := text.split(NewNameipep, ".")[0];
+            // Modify the HostName to only include content up to the first dot
+            NewNameipep := text.split(NewNameipep, ".")[0];
         end if;
 
         sysosnameipep := "%NewNameipep%";
+
         if ipep then
-        cinamestartipep := ipep.Name;
-        ipep.Name := "%sysosnameipep%-%cinamestartipep%";
-        ipep.Department := "SKYDISCOVERY";
+            cinamestartipep := ipep.Name;
+            ipep.Name := "%sysosnameipep%-%cinamestartipep%";
+            ipep.Department := "SKYDISCOVERY";
         end if;
 
     end body;

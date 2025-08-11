@@ -1,21 +1,10 @@
-// This is a template pattern module containing a CMDB syncmapping
-// that changes the HostName attribute of BMC_Printer so it
-// never contains a dot.
-//
-// Text prefixed with // like these lines are comments that extend to
-// the end of the line.
-//
-// This pattern is in the public domain.
-
 tpl 1.5 module SKYDiscovery.CMDB.Printer_Sync_Updates;
 
 from CMDB.Printer_Printer import Printer_Printer 2.0;
 
 syncmapping Printer_Sync_Change 1.0
-    """
-    Change the default Printer HostName and TokenId to take
-    only the first component of compound dot-separated hostnames.
-    """
+    """ Add one or more new attributes to the CI, based on attributes in the BMC Discovery all node.
+    SystemName, Department, HostName, UnstructeredData & CustAssignedTo  """
     overview
         tags CMDB, Extension;
     end overview;
@@ -47,30 +36,29 @@ syncmapping Printer_Sync_Change 1.0
 
 
         if computersystem.host_managedby <> "" then
-        managedby := printer_node.host_managedby;
-        assetdata := "mby:%managedby%";
+            managedby := printer_node.host_managedby;
+            assetdata := "mby:%managedby%";
         end if;
 
         if computersystem.host_ownedby <> "" then
-        ownedby := printer_node.host_ownedby;
-        assetdata := "%assetdata%,oby:%ownedby%";
+            ownedby := printer_node.host_ownedby;
+            assetdata := "%assetdata%,oby:%ownedby%";
         end if;
 
         if computersystem.host_supportedby <> "" then
-        supportedby := printer_node.host_supportedby;
-        assetdata := "%assetdata%,sby:%supportedby%";
+            supportedby := printer_node.host_supportedby;
+            assetdata := "%assetdata%,sby:%supportedby%";
         end if;
 
         if computersystem.host_mandate <> "" then
-        mandate := printer_node.host_mandate;
-        assetdata := "%assetdata%,man:%mandate%";
+            mandate := printer_node.host_mandate;
+            assetdata := "%assetdata%,man:%mandate%";
         end if;
 
 
         if assetdata <> "nodata" then
-        computersystem.UnstructuredData := "%assetdata%";
+            computersystem.UnstructuredData := "%assetdata%";
         end if;
-
 
         computersystem.CustAssignedTo := "%ClientName%";
         computersystem.SystemName := "%NewName%";

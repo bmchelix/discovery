@@ -5,15 +5,13 @@ from CMDB.LoadBalancerGroup_Cluster import LoadBalancerGroup_Cluster 2.0;
 
 
 syncmapping LBG_CLUSTER_CMDB_SYNC 1.0
-
-    """
-    Override the default CTI values for certain BMC_CLUSTER CIs for load balancers.
-    """
+    """ Add one or more new attributes to the CI, based on attributes in the BMC Discovery all node.
+    Department, ManufacturerName & VersionNumber """
     overview
         tags CMDB, Extension;
     end overview;
 
-        mapping from LoadBalancerGroup_Cluster.lb_instance as lb_instance
+    mapping from LoadBalancerGroup_Cluster.lb_instance as lb_instance
         // No additional structure -- we are just modifying the
         // existing Product CI.
     end mapping;
@@ -23,19 +21,19 @@ syncmapping LBG_CLUSTER_CMDB_SYNC 1.0
         cicluster:= LoadBalancerGroup_Cluster.cluster_ci or none;
         
         if cicluster = none then
-        stop;
+            stop;
         end if;
 
         cicluster.Department := "SKYDISCOVERY";
 
         verchk := cicluster.VersionNumber or none;
         if verchk = "None" or verchk = none then
-              cicluster.VersionNumber := "NoData";
+            cicluster.VersionNumber := "NoData";
         end if;
 
         mfgnchk := cicluster.ManufacturerName or none;
         if mfgnchk = "None" or mfgnchk = none then
-              cicluster.ManufacturerName := "unknown manufacturer";
+            cicluster.ManufacturerName := "unknown manufacturer";
         end if;
  
         ssvn := cicluster.VersionNumber;
@@ -43,9 +41,8 @@ syncmapping LBG_CLUSTER_CMDB_SYNC 1.0
         cinamestart := cicluster.Name;
         
         if ssdtype = 'list' then
-              cicluster.VersionNumber := '';
+            cicluster.VersionNumber := '';
         end if;
-
 
     end body;
 

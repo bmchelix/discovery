@@ -7,36 +7,32 @@ from CMDB.Host_ComputerSystem               import Host_ComputerSystem 2.0;
 //from CMDB.Host_ManagementController         import Host_ManagementController 2.4;
 
 syncmapping Document_Augment 1.0
-    """
-    TLS Detail nodes under SoftwareInstances, LoadBalancerServices or ManagementController
-    mapped to BMC_Document.
-	Add one or more new attributes to the CI, based on attributes in the BMC Discovery all node.
-    """
+    """ TLS Detail nodes under SoftwareInstances, LoadBalancerServices or ManagementController mapped to BMC_Document.
+	Add one or more new attributes to the CI, based on attributes in the BMC Discovery all node """
     overview
-	tags CMDB, Extension;
+    	tags CMDB, Extension;
     end overview;
 
     mapping from TLS_Document_Detail.detail as detail
-
     end mapping;
 
-body
-	hosting_ci := Host_ComputerSystem.computersystem or none;
+    body
+	    hosting_ci := Host_ComputerSystem.computersystem or none;
 
         if hosting_ci = none then
-        document_ci := TLS_Document_Detail.document;
+            document_ci := TLS_Document_Detail.document;
          
-        if document_ci then
-            document_ci.Department := "SKYDISCOVERY";
-        end if;
-        stop;
+            if document_ci then
+                document_ci.Department := "SKYDISCOVERY";
+            end if;
+            stop;
         end if;
 
         //determined the hosting_ci as "hosting_ci".
         sysname := hosting_ci.Name;
         newname := sysname;
         if sysname has substring "." then
-        // Modify the HostName to only include content up to the first dot
+            // Modify the HostName to only include content up to the first dot
             newname := text.split(sysname, ".")[0];
         end if;
 

@@ -5,46 +5,42 @@ from CMDB.Host_ComputerSystem                import Host_ComputerSystem 2.0;
 from CMDB.MFPart_ComputerSystem              import MFPart_ComputerSystem 2.0;
 
 syncmapping Database_Augment 1.0
-"""
-Add one or more new attributes to the BMC_Database CI, based
-on attributes in the BMC Discovery all node.
-"""
-overview
-	tags CMDB, Extension;
-end overview;
+        """ Add one or more new attributes to the BMC_Database CI, based on attributes in the BMC Discovery all node """
+        overview
+        tags CMDB, Extension;
+        end overview;
 
-mapping from Database.database_node as database_node
-end mapping;
+        mapping from Database.database_node as database_node
+        end mapping;
 
-body
-	hosting_ci := Host_ComputerSystem.computersystem or
-				MFPart_ComputerSystem.computersystem or none;
+        body
+                hosting_ci := Host_ComputerSystem.computersystem or
+                                MFPart_ComputerSystem.computersystem or none;
 
-        if hosting_ci = none then
-        database_ci := Database.database_ci;
-         
-        if database_ci then
-            database_ci.Department := "SKYDISCOVERY";
-        end if;
-        stop;
-        end if;
+                if hosting_ci = none then
+                        database_ci := Database.database_ci;
 
-	sysname := hosting_ci.Name;
-	newname := sysname;
-        if sysname has substring "." then
-            // Modify the HostName to only include content up to the first dot
-            newname := text.split(sysname, ".")[0];
-        end if;
-	
+                        if database_ci then
+                                database_ci.Department := "SKYDISCOVERY";
+                        end if;
+                        stop;
+                end if;
 
-	database_ci := Database.database_ci;
-        ciname := database_ci.Name;
-	database_ci.ParentName := sysname;
-	database_ci.CustCIName := newname;
-        database_ci.Name := "%newname%-%ciname%";
-        database_ci.Department := "SKYDISCOVERY";
+                sysname := hosting_ci.Name;
+                newname := sysname;
+                if sysname has substring "." then
+                        // Modify the HostName to only include content up to the first dot
+                        newname := text.split(sysname, ".")[0];
+                end if;
 
-end body;
+                database_ci := Database.database_ci;
+                ciname := database_ci.Name;
+                database_ci.ParentName := sysname;
+                database_ci.CustCIName := newname;
+                database_ci.Name := "%newname%-%ciname%";
+                database_ci.Department := "SKYDISCOVERY";
+
+        end body;
 
 end syncmapping;
 

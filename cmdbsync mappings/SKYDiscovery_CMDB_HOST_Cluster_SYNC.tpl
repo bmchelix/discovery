@@ -5,27 +5,24 @@ from CMDB.Cluster import Cluster 3.0;
 
 
 syncmapping HOST_CLUSTER_CMDB_SYNC 1.0
-
-    """
-    Override the default CTI values for certain BMC_OPERATINGSYSTEM CIs.
-    """
+    """ Add one or more new attributes to the CI, based on attributes in the BMC Discovery all node.
+    Department, ManufacturerName & VersionNumber """
     overview
         tags CMDB, Extension;
     end overview;
 
-        mapping from Cluster.cluster as cluster
+    mapping from Cluster.cluster as cluster
         // No additional structure -- we are just modifying the
         // existing Product CI.
     end mapping;
 
     body
-
         cicluster:= Cluster.cluster_ci;
         cicluster.Department := "SKYDISCOVERY";
 
         verchk := cicluster.VersionNumber or none;
         if verchk = "None" or verchk = none then
-        cicluster.VersionNumber := "NoData";
+            cicluster.VersionNumber := "NoData";
         end if;
 
         mfgnchk := cicluster.ManufacturerName or none;
@@ -38,9 +35,8 @@ syncmapping HOST_CLUSTER_CMDB_SYNC 1.0
         cinamestart := cicluster.Name;
         
         if ssdtype = 'list' then
-        cicluster.VersionNumber := '';
+            cicluster.VersionNumber := '';
         end if;
-
 
     end body;
 

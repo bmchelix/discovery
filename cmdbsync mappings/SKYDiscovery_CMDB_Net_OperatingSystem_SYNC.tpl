@@ -1,12 +1,4 @@
-// This is a template pattern module containing a CMDB syncmapping
-//
-// Names surrounded by double dollar signs like $$pattern_name$$ should all be 
-// replaced with values suitable for the pattern.
-//
-// Text prefixed with // like these lines are comments that extend to
-// the end of the line.
-//
-// This pattern is in the public domain.
+
 
 tpl 1.19 module SKYDiscovery.CMDB.Net_OperatingSystem_SYNC;
 
@@ -15,10 +7,8 @@ from CMDB.NetworkDevice_ComputerSystem  import NetworkDevice_ComputerSystem 2.0;
 
 
 syncmapping NET_OS_CMDB_SYNC 1.0
-
-    """
-    Override the default CTI values for certain BMC_OPERATINGSYSTEM CIs.
-    """
+    """ Add one or more new attributes to the CI, based on attributes in the BMC Discovery all node.
+    Name, Department & VersionNumber """
     overview
         tags CMDB, Extension;
     end overview;
@@ -29,7 +19,6 @@ syncmapping NET_OS_CMDB_SYNC 1.0
     end mapping;
 
     body
-       
         osystem := NetworkDevice_OperatingSystem.device_os;
         hosting_ci := NetworkDevice_ComputerSystem.device_cs;
         sysname := hosting_ci.Name;
@@ -37,8 +26,8 @@ syncmapping NET_OS_CMDB_SYNC 1.0
         NewName := text.lower("%sysname%");
 
         if NewName has substring "." then
-        // Modify the HostName to only include content up to the first dot
-        NewName := text.split(NewName, ".")[0];
+            // Modify the HostName to only include content up to the first dot
+            NewName := text.split(NewName, ".")[0];
         end if;
 
         sysosname := "%NewName%";
@@ -50,7 +39,7 @@ syncmapping NET_OS_CMDB_SYNC 1.0
 
         verchk := osystem.VersionNumber or none;
         if verchk = "None" or verchk = none then
-        osystem.VersionNumber := "NoData";
+            osystem.VersionNumber := "NoData";
         end if;
 
         ssvn := osystem.VersionNumber;
@@ -58,7 +47,7 @@ syncmapping NET_OS_CMDB_SYNC 1.0
         cinamestart := osystem.Name;
         
         if ssdtype = 'list' then
-        osystem.VersionNumber := '';
+            osystem.VersionNumber := '';
         end if;
 
     end body;
